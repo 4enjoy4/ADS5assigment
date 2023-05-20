@@ -33,7 +33,24 @@ public class BST <K, V>{
         return node;
     }
 
-    public V get(K key){}
+    public V get(K key){
+        Node node = getNode(root, key);
+        return node != null ? node.value : null;
+    }
+    private Node getNode(Node node, K key) {
+        if (node == null) {
+            return null;
+        }
+
+        int cmp = comparator.compare(key, node.key);
+        if (cmp < 0) {
+            return getNode(node.left, key);
+        } else if (cmp > 0) {
+            return getNode(node.right, key);
+        } else {
+            return node;
+        }
+    }
     public void delete (K key){}
     public Iterable<K> iterator(){}
 }
