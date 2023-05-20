@@ -1,4 +1,7 @@
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
+
 public class BST <K, V>{
     private Node root;
     private Comparator<K> comparator;
@@ -82,5 +85,17 @@ public class BST <K, V>{
         }
         return node;
     }
-    public Iterable<K> iterator(){}
+    public Iterable<K> iterator(){
+        List<K> keys = new ArrayList<>();
+        inorderTraversal(root, keys);
+        return keys;
+    }
+    private void inorderTraversal(Node node, List<K> keys) {
+        if (node != null) {
+            inorderTraversal(node.left, keys);
+            keys.add(node.key);
+            inorderTraversal(node.right, keys);
+        }
+    }
+
 }
