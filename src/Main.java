@@ -11,10 +11,15 @@ public class Main {
         System.out.println("Value associated with key 2: " + letter);
         String letter1 = bst.get(4);
         System.out.println("Value associated with key 4: " + letter1);
-        bst.delete(2);
         Iterable<Integer> keys = bst.iterator();
         System.out.println("Keys in the BST:");
         for (Integer key : keys) {
+            System.out.println(key);
+        }
+        bst.delete(2);
+        Iterable<Integer> keys1 = bst.iterator();
+        System.out.println("Keys in the BST:");
+        for (Integer key : keys1) {
             System.out.println(key);
         }
 
