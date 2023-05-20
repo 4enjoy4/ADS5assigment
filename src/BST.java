@@ -52,5 +52,35 @@ public class BST <K, V>{
         }
     }
     public void delete (K key){}
+    private Node deleteNode(Node node, K key) {
+        if (node == null) {
+            return null;
+        }
+
+        int cmp = comparator.compare(key, node.key);
+        if (cmp < 0) {
+            node.left = deleteNode(node.left, key);
+        } else if (cmp > 0) {
+            node.right = deleteNode(node.right, key);
+        } else {
+            if (node.left == null) {
+                return node.right;
+            } else if (node.right == null) {
+                return node.left;
+            } else {
+                Node successor = findSuccessor(node.right);
+                node.key = successor.key;
+                node.value = successor.value;
+                node.right = deleteNode(node.right, successor.key);
+            }
+        }
+        return node;
+    }
+    private Node findSuccessor(Node node) {
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node;
+    }
     public Iterable<K> iterator(){}
 }
