@@ -15,6 +15,22 @@ public class BST <K, V>{
         this.comparator = comparator;
     }
     public void put(K key, V value){
+        root = putNode(root, key, value);
+    }
+    private Node putNode(Node node, K key, V value) {
+        if (node == null) {
+            return new Node(key, value);
+        }
+
+        int cmp = comparator.compare(key, node.key);
+        if (cmp < 0) {
+            node.left = putNode(node.left, key, value);
+        } else if (cmp > 0) {
+            node.right = putNode(node.right, key, value);
+        } else {
+            node.value = value;
+        }
+        return node;
     }
 
     public V get(K key){}
