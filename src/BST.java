@@ -1,5 +1,7 @@
+import java.util.Comparator;
 public class BST <K, V>{
     private Node root;
+    private Comparator<K> comparator;
     private class Node{
         private K key;
         private V value;
@@ -9,9 +11,12 @@ public class BST <K, V>{
             this.value = value;
         }
     }
-    public void put(K key, V value){
-
+    public BST(Comparator<K> comparator) {
+        this.comparator = comparator;
     }
+    public void put(K key, V value){
+    }
+
     public V get(K key){}
     public void delete (K key){}
     public Iterable<K> iterator(){}
