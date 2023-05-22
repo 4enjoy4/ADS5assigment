@@ -98,6 +98,18 @@ public class BST <K, V>{
         }
         return node;
     }
+    public void Height(){
+        Node node = getHeight(root);
+
+    }
+    public Node getHeight(Node node){
+        int x = 0;
+        while(node.left != null ){
+            return node.left;
+        }
+        System.out.println(x);
+        return node;
+    }
     public Iterable<K> iterator(){//Returns an iterable of keys in ascending order from the BST.
         List<K> keys = new ArrayList<>();
         inorderTraversal(root, keys);
@@ -109,6 +121,8 @@ public class BST <K, V>{
             keys.add(node.key);
             inorderTraversal(node.right, keys);
         }
+
+
     }
 
 }
